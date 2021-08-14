@@ -1,15 +1,10 @@
 import { Box, Typography } from '@material-ui/core';
+import { isSameDay } from 'date-fns';
 import { formatDateTimeToDate } from './utils';
 
-/**
- * FIXME:
- * - All 15th are getting highlighted as today
- * - For eg check September 15th
- */
-
 export const CalendarContent = ({ week }: { week: Date[] }): JSX.Element => {
-  function isSameDay(date: Date, dateToday: Date): any {
-    if (formatDateTimeToDate(date) === formatDateTimeToDate(dateToday)) {
+  function isSameDayStyles(date: Date, dateToday: Date): any {
+    if (isSameDay(date, dateToday)) {
       return {
         color: 'white',
         borderRadius: '50%',
@@ -34,7 +29,7 @@ export const CalendarContent = ({ week }: { week: Date[] }): JSX.Element => {
       <Box width="100%" display="flex" justifyContent="center">
         {week.map((dateTime) => (
           <Box key={formatDateTimeToDate(dateTime)} width="100%" display="flex" justifyContent="center">
-            <Typography style={isSameDay(dateTime, new Date())}>{formatDateTimeToDate(dateTime)}</Typography>
+            <Typography style={isSameDayStyles(dateTime, new Date())}>{formatDateTimeToDate(dateTime)}</Typography>
           </Box>
         ))}
       </Box>
