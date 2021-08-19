@@ -1,5 +1,5 @@
 import { Box } from '@material-ui/core';
-import { getTime, millisecondsToMinutes, minutesToMilliseconds } from 'date-fns';
+import { getMinutes } from 'date-fns';
 import { getTimeSlot } from './utils';
 import { GetEvents } from './utils/getEvents';
 
@@ -7,14 +7,13 @@ export const EventLabel = ({ event }: { event: GetEvents }) => {
   const [convertStartToTime, convertEndToTime] = getTimeSlot(event.date, event.duration);
 
   const labelStyles = () => {
-    // const start = getTime(event.date);
-    const eventDuration = minutesToMilliseconds(event.duration);
-    // const end = start + eventDuration;
-    const height = (millisecondsToMinutes(eventDuration) * 100) / 60;
-    // const marginTop = (millisecondsToMinutes(start) * 100) / 600;
+    const height = (event.duration * 100) / 60;
+    const start = getMinutes(event.date);
+    const heightOfCell = 60;
+    const marginTop = ((start / 60) * 100 * heightOfCell) / 100;
 
     return {
-      // marginTop: `${marginTop}%`,
+      marginTop: `${marginTop}px`,
       height: `${height}%`,
     };
   };
