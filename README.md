@@ -1,6 +1,6 @@
 # Google Calendar
 
-Google Calendar is a week wise calendar with functionalities like skipping through weeks, and random calendar events.
+Google Calendar is a week-wise calendar with functionalities like skipping through weeks and random calendar events.
 
 ## Installation
 
