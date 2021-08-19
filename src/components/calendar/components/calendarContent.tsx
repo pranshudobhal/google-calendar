@@ -10,25 +10,22 @@ export const CalendarContent = ({ week }: { week: Date[] }): JSX.Element => {
   function isSameDayStyles(date: Date, dateToday: Date): any {
     if (isSameDay(date, dateToday)) {
       return {
-        color: 'white',
-        borderRadius: '50%',
-        padding: '0.5rem 0.75rem',
-        backgroundColor: '#3B82F6',
+        color: '#F59E0B',
         width: 'max-content',
+        fontSize: '2rem',
       };
     }
     return {
       margin: '0.5rem',
+      fontSize: '2rem',
     };
   }
 
   return (
-    <Box display="flex" flexDirection="column" width="100%" justifyContent="space-between" border={1} borderColor="error.main">
-      <Box display="flex" justifyContent="flex-start">
-        <Box width="5%" display="flex" justifyContent="center" alignItems="center" textAlign="center" border={1} borderColor="error.main">
-          hi
-        </Box>
-        <Box width="95%" display="flex" flexDirection="column" justifyContent="center" border={1} borderColor="error.main">
+    <Box display="flex" flexDirection="column" width="100%" justifyContent="space-between">
+      <Box display="flex" justifyContent="flex-start" borderBottom="1px solid #D1D5DB">
+        <Box width="5%" display="flex" justifyContent="center" alignItems="center" textAlign="center"></Box>
+        <Box width="95%" display="flex" flexDirection="column" justifyContent="center">
           <Box display="flex">
             {weekdays.map((day) => (
               <Box key={day} width="100%" display="flex" justifyContent="center">
@@ -46,14 +43,14 @@ export const CalendarContent = ({ week }: { week: Date[] }): JSX.Element => {
         </Box>
       </Box>
       <Box display="flex" justifyContent="flex-start">
-        <Box width="5%" border={1} borderColor="error.main">
+        <Box width="5%">
           {times.map((time) => (
-            <Box border={1} height="60px" borderColor="blue" display="flex" justifyContent="center">
+            <Box height="80px" display="flex" justifyContent="center">
               {time}
             </Box>
           ))}
         </Box>
-        <Box width="95%" border={1} borderColor="error.main" display="flex" justifyContent="center">
+        <Box width="95%" display="flex" justifyContent="center">
           {week.map((day) => (
             <EventsContainer day={day} />
           ))}

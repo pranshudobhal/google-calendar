@@ -4,7 +4,7 @@ import { EventLabel } from './eventLabel';
 import { getAllTime, getEvents } from './utils';
 import { GetEvents } from './utils/getEvents';
 
-export const EventsContainer = ({ day }: { day: Date }) => {
+export const EventsContainer = ({ day }: { day: Date }): JSX.Element => {
   const eventsByDay = getEvents(day);
   const times = getAllTime();
 
@@ -22,9 +22,9 @@ export const EventsContainer = ({ day }: { day: Date }) => {
   }
 
   return (
-    <Box width="100%" border={1} borderColor="error.main">
+    <Box width="100%">
       {times.map((time) => (
-        <Box border={1} borderColor="blue" height="60px" display="flex" justifyContent="center">
+        <Box height="80px" display="flex" justifyContent="center" border="1px solid #D1D5DB">
           {eventByTime(time) !== null ? eventByTime(time)?.map((event) => <EventLabel event={event} />) : ''}
         </Box>
       ))}

@@ -17,7 +17,7 @@ export const Calendar = ({ date, setDate }: Props): JSX.Element => {
   }, [date]);
 
   return (
-    <Box display="flex" flexDirection="column" width="100%" border={1} borderColor="primary.main">
+    <Box display="flex" flexDirection="column" width="100%" mb={6}>
       <CalendarHeader date={date} week={week} setWeek={setWeek} setDate={setDate} />
       <CalendarContent week={week} />
     </Box>

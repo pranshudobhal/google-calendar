@@ -28,12 +28,13 @@ export const CalendarHeader = ({ date, week, setWeek, setDate }: Props): JSX.Ele
   const current = week.length !== 0 && getCurrentMonthAndYear(week);
 
   return (
-    <Box display="flex" justifyContent="space-between" alignItems="center" width="100%" p={2}>
+    <Box display="flex" justifyContent="space-between" alignItems="center" width="100%" p={2} mb={2}>
       <Tooltip title={dateToday}>
-        <Button variant="outlined" onClick={() => setDate(new Date())}>
+        <Button style={{ fontFamily: 'Montserrat' }} variant="outlined" onClick={() => setDate(new Date())}>
           Today
         </Button>
       </Tooltip>
+      <Typography variant="h5">{current}</Typography>
       <Box display="flex" alignItems="center">
         <Tooltip title="Previous week" TransitionComponent={Zoom}>
           <IconButton aria-label="Previous week" onClick={() => previousWeekHandler()}>
@@ -46,7 +47,6 @@ export const CalendarHeader = ({ date, week, setWeek, setDate }: Props): JSX.Ele
           </IconButton>
         </Tooltip>
       </Box>
-      <Typography variant="h5">{current}</Typography>
     </Box>
   );
 };
