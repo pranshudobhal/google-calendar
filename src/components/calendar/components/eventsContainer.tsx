@@ -8,6 +8,8 @@ export const EventsContainer = ({ day }: { day: Date }): JSX.Element => {
   const eventsByDay = getEvents(day);
   const times = getAllTime();
 
+  console.log({ times });
+
   function isSameHour(timeInHour: string, date: Date) {
     const timeOne = timeInHour;
     const timeTwo = format(date, 'h a');
@@ -18,14 +20,16 @@ export const EventsContainer = ({ day }: { day: Date }): JSX.Element => {
   function eventByTime(time: string): GetEvents[] | null {
     const events = eventsByDay.filter((event) => isSameHour(time, event.date));
 
-    return events.length !== 0 ? events : null;
+    return events;
   }
 
   return (
     <Box width="100%">
       {times.map((time) => (
         <Box height="80px" display="flex" justifyContent="center" border="1px solid #D1D5DB">
-          {eventByTime(time) !== null ? eventByTime(time)?.map((event) => <EventLabel event={event} />) : ''}
+          {eventByTime(time)?.map((event) => (
+            <EventLabel event={event} />
+          ))}
         </Box>
       ))}
     </Box>
